@@ -5,7 +5,7 @@ function Tarea(props) {
     return (
     <div>
         <h3>TAREA {props.tareaId}</h3>
-        <p>Descripcion tarea {props.tareaId} </p>
+        <p>{props.tareaDescripcion} </p>
     </div>
     );
 }
