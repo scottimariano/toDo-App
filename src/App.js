@@ -1,37 +1,35 @@
 import React from 'react';
-import './App.css';
-import Tarea from './Tarea.js';
+import Tareas from './componentes/Tareas';
+import NavBar from './componentes/NavBar';
+import {Link, BrowserRouter, Route} from 'react-router-dom'
+
 
 class App extends React.Component {
-constructor(props) {
-  super(props)
-  this.state = {
-    toDos: [{id:1, name: 'Tarea1', descripcion: 'Descripcion Tarea 1 test'}, {id:2, name: 'Tarea 2', descripcion: 'Descripcion Tarea 2 test'}]
+  constructor(props) {
+    super(props)
+    this.state = {
+      toDos: [{id:0, name: 'Tarea1', descripcion: 'Descripcion Tarea 1 test', completed: false}, {id:1, name: 'Tarea 2', descripcion: 'Descripcion Tarea 2 test',completed: false}, {id:2, name: 'Tarea 3', descripcion: 'Descripcion Tarea 3 test', completed: true}],
+    }
   }
-}
+  
+  handleChange = (i) => {
+    console.log(this.state.toDos[i].completed)
+    var newtoDos = this.state.toDos;
+    newtoDos[i].completed = !newtoDos[i].completed;
+    this.setState({toDos: newtoDos})
+  } 
+
+  
+
 
   render () {
     return (
-      <div className="App">
+      <div class="container">
         <header>
-          <h1>TUS TAREAS</h1>
-          <nav>
-            <ul className='navigationBar'>
-              <li>Tareas</li>
-              <li>Contactos</li>
-              <li>Notas</li>
-            </ul>
-          </nav>
-          
+          <NavBar />    
         </header>
-        <div>
-          <h2>TAREAS PENDIENTES</h2>
-          {this.state.toDos.length ? null : <div className='notificacion'>COMENCEMOS POR AGREGAR TAREAS</div>}
-          {this.state.toDos.map(function(toDo){
-            return <Tarea key={toDo.id} tareaId={toDo.id} tareaDescripcion={toDo.descripcion} />
-          })
-          }
-        </div>
+        <Tareas toDos={this.state.toDos} handleChange={this.handleChange}/>
+        
         <div>
           <br/>
           <br/>
