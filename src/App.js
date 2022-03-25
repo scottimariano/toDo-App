@@ -8,18 +8,25 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      //toDos: []
       toDos: [{id:0, name: 'Tarea1', descripcion: 'Descripcion Tarea 1 test', completed: false}, {id:1, name: 'Tarea 2', descripcion: 'Descripcion Tarea 2 test',completed: false}, {id:2, name: 'Tarea 3', descripcion: 'Descripcion Tarea 3 test', completed: true}],
     }
   }
   
   handleChange = (i) => {
-    console.log(this.state.toDos[i].completed)
-    var newtoDos = this.state.toDos;
-    newtoDos[i].completed = !newtoDos[i].completed;
+    let newtoDos = this.state.toDos;
+    const index = newtoDos.findIndex(toDo => {return toDo.id ===i})
+    newtoDos[index].completed = !newtoDos[index].completed;
     this.setState({toDos: newtoDos})
   } 
 
-  
+  addTodo = (newTodo) => {
+    console.log(newTodo)
+    let newtoDos = this.state.toDos;
+    newtoDos.push(newTodo);
+    this.setState({toDos: newtoDos})
+    console.log(this.state.toDos)
+  } 
 
 
   render () {
@@ -28,16 +35,7 @@ class App extends React.Component {
         <header>
           <NavBar />    
         </header>
-        <Tareas toDos={this.state.toDos} handleChange={this.handleChange}/>
-        
-        <div>
-          <br/>
-          <br/>
-          <h2>Crear nueva tarea</h2>
-          <input type='text' placeholder='Ingresa el nombre de tu tarea'></input>
-          <input type='text' placeholder='Ingresa la descripción de tu tarea'></input>
-          <button>Agregar Tarea</button>
-        </div>
+        <Tareas toDos={this.state.toDos} handleChange={this.handleChange} addTodo={this.addTodo}/>
       </div>
     );
   }
