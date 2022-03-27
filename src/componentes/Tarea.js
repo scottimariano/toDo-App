@@ -20,6 +20,12 @@ class Tarea extends React.Component {
                                 for={"checkbox_tarea" + this.props.tareaId}>
                                 {(this.props.tareaCompleted ? 'Done' : 'Pending')}
                             </label>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <button type="button" class="btn btn-sm btn-outline-secondary mt-3 " onClick={() => this.props.operations.deleteTodo(this.props.tareaId)}>
+                                    DELETE
+                                </button>
+                            </div>
+                           
                         </div>
                     </div>
                 </div>

@@ -1,9 +1,10 @@
 import React from 'react';
 import Tarea from './Tarea';
+import shortid from 'shortid';
 
 let newTaskTitlePreview = ''
 let newTaskDescPreview = ''
-let  newTodo = {
+let  emptyTodo = {
     id:'', 
     name: '', 
     descripcion: '', 
@@ -12,9 +13,6 @@ let  newTodo = {
 
 
 class Tareas extends React.Component {
-
-   
-
     previewDesc (e) {
         newTaskDescPreview = e.target.value
     }
@@ -24,11 +22,12 @@ class Tareas extends React.Component {
     }
 
     sendTodo (){
-        newTodo.id = '' // TENEMOS QUE DEFINIR COMO GENERAR UN ID PARA LAS NUEVAS TAREAS
-        newTodo.name = newTaskTitlePreview
-        newTodo.descripcion = newTaskDescPreview
-        newTodo.completed = false
-        this.props.addTodo(newTodo)
+        let newTodo = {}
+        newTodo.id = shortid.generate();
+        newTodo.name = newTaskTitlePreview;
+        newTodo.descripcion = newTaskDescPreview;
+        newTodo.completed = false;
+        this.props.operations.addTodo(newTodo);
     }
   
 
@@ -42,7 +41,7 @@ class Tareas extends React.Component {
                 {this.props.toDos.length ? null : <div>You don't have any pending tasks. <br/> If you can think of any, just write it down here</div>}
                 <div class="row g-2">
                     {this.props.toDos.map((toDo) => (
-                        <Tarea key={toDo.id} tareaId={toDo.id} tareaName={toDo.name} tareaDescripcion={toDo.descripcion} tareaCompleted={toDo.completed} handleChange={this.props.handleChange}/>
+                        <Tarea key={toDo.id} tareaId={toDo.id} tareaName={toDo.name} tareaDescripcion={toDo.descripcion} tareaCompleted={toDo.completed} handleChange={this.props.operations.handleChangeCompleted} operations={this.props.operations}/>
                         ))
                     }
                 </div>
