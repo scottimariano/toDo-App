@@ -1,17 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function NavBar(props) {
     return (
         <div>
             <ul class="nav nav-pills p-4">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Tasks</a>
+                    <Link to='/tasks' class="nav-link active" aria-current="page">Tasks</Link>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Notes</a>
+                    <Link to='/notes' class='nav-link'>Notes</Link>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contacts</a>
+                <Link to='/contacts' class='nav-link'>Contacts</Link>
                 </li>
           </ul>
         </div>

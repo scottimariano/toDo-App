@@ -1,16 +1,13 @@
 import React from 'react';
 import Tareas from './componentes/Tareas';
 import NavBar from './componentes/NavBar';
-import {Link, BrowserRouter, Route} from 'react-router-dom'
-
-
-
+import {Routes, Route} from "react-router-dom";
 
 class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      //toDos: []
+      //toDos: [],
       toDos: [{id:0, name: 'Tarea1', descripcion: 'Descripcion Tarea 1 test', completed: false}, {id:1, name: 'Tarea 2', descripcion: 'Descripcion Tarea 2 test',completed: false}, {id:2, name: 'Tarea 3', descripcion: 'Descripcion Tarea 3 test', completed: true}],
       
       operations: {
@@ -38,14 +35,18 @@ class App extends React.Component {
     
   }
 
-
   render () {
     return (
+      
       <div class="container">
         <header>
           <NavBar />    
         </header>
-        <Tareas toDos={this.state.toDos} operations={this.state.operations}/>
+        <Routes>
+          <Route path='/tasks' element={<Tareas toDos={this.state.toDos} operations={this.state.operations}/>} />
+          <Route path='/notes' element={<h1>NOTES</h1>} />
+          <Route path='/contacts' element={<h1>CONTACTS</h1>} />
+        </Routes>
       </div>
     );
   }
