@@ -8,7 +8,7 @@ class App extends React.Component {
     super(props)
     this.state = {
       //toDos: [],
-      toDos: [{id:0, name: 'Tarea1', descripcion: 'Descripcion Tarea 1 test', completed: false}, {id:1, name: 'Tarea 2', descripcion: 'Descripcion Tarea 2 test',completed: false}, {id:2, name: 'Tarea 3', descripcion: 'Descripcion Tarea 3 test', completed: true}],
+      toDos: [{id:0, name: 'Task 1', descripcion: 'Description Task 1 test', completed: false}, {id:1, name: 'Task 2', descripcion: 'Description Task 2 test',completed: false}, {id:2, name: 'Task 3', descripcion: 'Description Task 3 test', completed: true}],
       
       operations: {
         handleChangeCompleted : (i) => {
