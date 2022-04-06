@@ -16,8 +16,8 @@ class Form extends React.Component {
     sendTodo (){
         let newTodo = {}
         newTodo.id = shortid.generate();
-        newTodo.name = newTaskTitlePreview;
-        newTodo.descripcion = newTaskDescPreview;
+        newTodo.title = newTaskTitlePreview;
+        newTodo.body = newTaskDescPreview;
         newTodo.completed = false;
         this.props.operations.addTodo(newTodo);
         document.getElementById("myForm").reset();

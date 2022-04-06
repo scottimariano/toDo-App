@@ -17,7 +17,7 @@ class Tareas extends React.Component {
                 <Form operations={this.props.operations}></Form>  
                 <div class="row g-2 mt-2">
                         {this.props.toDos.map((toDo) => (
-                            <Tarea key={toDo.id} tareaId={toDo.id} tareaName={toDo.name} tareaDescripcion={toDo.descripcion} tareaCompleted={toDo.completed} handleChange={this.props.operations.handleChangeCompleted} operations={this.props.operations}/>
+                            <Tarea key={toDo.id} tareaId={toDo.id} tareaName={toDo.title} tareaDescripcion={toDo.body} tareaCompleted={toDo.completed} handleChange={this.props.operations.handleChangeCompleted} operations={this.props.operations}/>
                             ))
                         }
                 </div>

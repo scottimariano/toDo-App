@@ -7,8 +7,8 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      //toDos: [],
-      toDos: [{id:0, name: 'Task 1', descripcion: 'Description Task 1 test', completed: false}, {id:1, name: 'Task 2', descripcion: 'Description Task 2 test',completed: false}, {id:2, name: 'Task 3', descripcion: 'Description Task 3 test', completed: true}],
+      toDos: [],
+      //toDos: [{id:0, name: 'Task 1', descripcion: 'Description Task 1 test', completed: false}, {id:1, name: 'Task 2', descripcion: 'Description Task 2 test',completed: false}, {id:2, name: 'Task 3', descripcion: 'Description Task 3 test', completed: true}],
       
       operations: {
         handleChangeCompleted : (i) => {
@@ -33,6 +33,21 @@ class App extends React.Component {
       }
     }
     
+  }
+
+  cargarToDos() {
+    fetch('https://jsonplaceholder.typicode.com/posts')
+      .then((response) => response.json())
+      .then((json) => {
+        this.setState({toDos : json.slice(0,5)})
+        console.log(this.state.toDos)
+      });
+
+  }
+
+  componentDidMount() {
+    this.cargarToDos()
+
   }
 
   render () {
