@@ -17,7 +17,7 @@ class Tarea extends React.Component {
                                 defaultChecked={this.props.tareaCompleted}
                             />
                             <label class={"form-check-label " + (this.props.tareaCompleted ? '' : 'text-muted')} 
-                                for={"checkbox_tarea" + this.props.tareaId}>
+                                htmlFor={"checkbox_tarea" + this.props.tareaId}>
                                 {(this.props.tareaCompleted ? 'Done' : 'Pending')}
                             </label>
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
