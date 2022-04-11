@@ -9,12 +9,12 @@ class NavBar extends React.Component {
                 <li class="nav-item">
                     <Link to='/tasks' class="nav-link active">Tasks</Link>
                 </li>
-                <li class="nav-item">
+                {/* <li class="nav-item">
                     <Link to='/notes' class='nav-link'>Notes</Link>
                 </li>
                 <li class="nav-item">
                 <Link to='/contacts' class='nav-link'>Contacts</Link>
-                </li>
+                </li> */}
           </ul>
         </div>
 
